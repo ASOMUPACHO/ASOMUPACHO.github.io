@@ -45,9 +45,9 @@ section {
   flex-wrap: wrap;
 }
 
-.logo-izquierda {
-  width: 60px;
-  height: 60px;
+.logo-derecha{
+  width: 80px;
+  height: 80px;
 }
 
 .texto-encabezado {
