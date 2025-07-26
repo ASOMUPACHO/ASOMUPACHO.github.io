@@ -38,12 +38,12 @@ section {
   margin-bottom: 2em;
 }
 
-footer {
-  background-color: #b3478f;
-  color: white;
-  text-align: center;
-  padding: 1em;
+#fecha-actualizacion {
+  font-size: 0.9em;
+  color: #f3eaf0;
+  margin-top: 5px;
 }
+
 .encabezado {
   display: flex;
   align-items: center;
@@ -52,8 +52,8 @@ footer {
 }
 
 .logo-izquierda {
-  width: 80px;
-  height: auto;
+  width: 40px;
+  height: 40px;
 }
 
 .texto-encabezado {
