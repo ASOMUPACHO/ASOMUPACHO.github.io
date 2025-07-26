@@ -46,17 +46,18 @@ footer {
 }
 .encabezado {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 20px; /* Espacio entre logo y texto */
   flex-wrap: wrap;
 }
 
-.texto-encabezado {
-  max-width: 70%;
+.logo-izquierda {
+  width: 80px;
+  height: auto;
 }
 
-.logo-derecha {
-  width: 120px;
-  height: 10px;
+.texto-encabezado {
+  flex: 1;
 }
+
 
