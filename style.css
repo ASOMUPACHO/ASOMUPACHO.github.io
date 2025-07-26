@@ -38,22 +38,6 @@ section {
   margin-bottom: 2em;
 }
 
-.encabezado {
-  display: flex;
-  align-items: center;
-  gap: 20px; /* Espacio entre logo y texto */
-  flex-wrap: wrap;
-}
-
-.logo-derecha{
-  width: 40px;
-  height: 40px;
-}
-
-.texto-encabezado {
-  flex: 1;
-}
-
 footer {
   background-color: #b3478f;
   color: white;
