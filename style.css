@@ -1,51 +1,170 @@
-body {
-  font-family: 'Segoe UI', sans-serif;
-  margin: 0;
-  background-color: #f9f4f0;
-  color: #333;
+/* Banner rotador */
+.banner-container {
+  width: 100%;
+  margin: 0 auto;
 }
 
-header {
-  background-color: #b3478f;
+.banner-rotator {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+}
+
+.banner-slides {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.banner-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  visibility: hidden;
+}
+
+.banner-slide.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.banner-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.banner-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(123,44,191,0.9));
   color: white;
-  text-align: center;
-  padding: 2em 1em;
-}
-
-header h1 {
-  margin: 0;
-  font-size: 2.5em;
-}
-
-nav {
-  background-color: #f1d4e5;
-  padding: 1em;
+  padding: 3rem 2rem 2rem;
   text-align: center;
 }
 
-nav a {
-  margin: 0 15px;
-  color: #b3478f;
+.banner-caption h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.banner-caption p {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.banner-btn {
+  display: inline-block;
+  background: var(--rosa, #F4A6C1);
+  color: var(--morado, #7B2CBF);
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 600;
+  transition: 0.2s;
 }
 
-main {
-  padding: 2em;
-}
-
-section {
-  margin-bottom: 2em;
-}
-
-footer {
-  background-color: #b3478f;
+.banner-btn:hover {
+  background: var(--lila, #C8A2FF);
   color: white;
-  text-align: center;
-  padding: 1em;
 }
 
-.logo {
+.banner-indicadores {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.8rem;
+  z-index: 10;
+}
+
+.indicador {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.indicador.active {
+  background: white;
+  transform: scale(1.2);
+}
+
+.banner-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(123,44,191,0.5);
+  color: white;
+  border: none;
   width: 50px;
-  margin-bottom: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 10;
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner-control:hover {
+  background: var(--morado, #7B2CBF);
+}
+
+.banner-control.prev {
+  left: 1rem;
+}
+
+.banner-control.next {
+  right: 1rem;
+}
+
+@media (max-width: 768px) {
+  .banner-rotator {
+    height: 400px;
+  }
+  
+  .banner-caption h2 {
+    font-size: 1.8rem;
+  }
+  
+  .banner-caption p {
+    font-size: 1rem;
+  }
+  
+  .banner-control {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner-rotator {
+    height: 350px;
+  }
+  
+  .banner-caption {
+    padding: 2rem 1rem 1rem;
+  }
+  
+  .banner-caption h2 {
+    font-size: 1.5rem;
+  }
 }
