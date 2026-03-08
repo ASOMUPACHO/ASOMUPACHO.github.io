@@ -3,33 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-  <title>ASOMUPACHO · Mujeres con corazón</title>
-  <!-- Font Awesome 6 (free) -->
+  <title>ASOMUPACHO · Mujeres Pachunas</title>
+  <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Segoe UI', Roboto, system-ui, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
     }
 
     body {
+      font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
       background-color: #FFFFFF;
       color: #2D2D2D;
       line-height: 1.5;
       overflow-x: hidden;
-      width: 100%;
     }
 
-    /* Paleta de colores - movimiento de mujeres */
+    /* ===== PALETA ASOMUPACHO ===== */
     :root {
-      --morado-principal: #7B2CBF;
-      --lila-claro: #C8A2FF;
-      --rosado-suave: #F4A6C1;
+      --morado: #7B2CBF;
+      --lila: #C8A2FF;
+      --rosa: #F4A6C1;
       --blanco: #FFFFFF;
-      --gris-suave: #6B6B6B;
-      --texto-oscuro: #2D2D2D;
+      --gris: #6B6B6B;
+      --texto: #2D2D2D;
+      --fondo-claro: #faf5ff;
     }
 
     img {
@@ -38,318 +38,413 @@
       display: block;
     }
 
+    /* ===== HEADER ===== */
     header {
-      background: linear-gradient(95deg, var(--blanco) 0%, #f3e9ff 100%);
-      border-bottom: 3px solid var(--morado-principal);
-      padding: 1rem;
-      box-shadow: 0 4px 10px rgba(123, 44, 191, 0.08);
+      background: var(--blanco);
+      box-shadow: 0 2px 15px rgba(123, 44, 191, 0.1);
+      padding: 1rem 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
 
     .encabezado {
-      max-width: 1300px;
+      max-width: 1200px;
       margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      flex-wrap: wrap;
       gap: 1rem;
     }
 
     .texto-encabezado h1 {
-      font-size: clamp(1.8rem, 6vw, 2.5rem);
-      font-weight: 600;
-      letter-spacing: -0.5px;
-      color: var(--morado-principal);
-      line-height: 1.1;
+      font-size: clamp(1.5rem, 5vw, 2rem);
+      color: var(--morado);
+      line-height: 1.2;
     }
 
     .texto-encabezado p {
-      font-size: clamp(0.9rem, 3.5vw, 1.2rem);
-      color: var(--gris-suave);
-      font-weight: 350;
-      margin-top: 0.4rem;
-      border-left: 4px solid var(--rosado-suave);
-      padding-left: 1rem;
+      font-size: clamp(0.8rem, 3vw, 1rem);
+      color: var(--gris);
     }
 
     .logo-derecha {
-      width: clamp(70px, 15vw, 95px);
-      height: auto;
-      aspect-ratio: 1/1;
+      width: 70px;
+      height: 70px;
       border-radius: 50%;
-      border: 3px solid var(--lila-claro);
-      box-shadow: 0 8px 16px rgba(123, 44, 191, 0.15);
-      background-color: white;
+      border: 3px solid var(--lila);
       object-fit: cover;
     }
 
+    /* ===== NAV ===== */
     nav {
-      background-color: var(--blanco);
+      background: var(--blanco);
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: clamp(1rem, 4vw, 2.8rem);
+      gap: 1.5rem;
       padding: 0.8rem 1rem;
-      border-bottom: 1px solid var(--lila-claro);
-      box-shadow: 0 2px 8px rgba(123, 44, 191, 0.03);
+      border-bottom: 2px solid var(--lila);
     }
 
     nav a {
       text-decoration: none;
-      font-weight: 550;
-      color: var(--gris-suave);
-      font-size: clamp(1rem, 3.5vw, 1.2rem);
+      font-weight: 600;
+      color: var(--gris);
+      font-size: 1.1rem;
       transition: 0.2s;
       border-bottom: 2px solid transparent;
       padding-bottom: 4px;
-      white-space: nowrap;
     }
 
     nav a:hover {
-      color: var(--morado-principal);
-      border-bottom-color: var(--rosado-suave);
+      color: var(--morado);
+      border-bottom-color: var(--rosa);
     }
 
-    /* Banner con la imagen Día de la mujer.png - optimizado móvil */
-    .banner-mujer {
-      position: relative;
-      width: 100%;
-      height: clamp(250px, 50vh, 500px);
-      margin: 0 auto;
-      overflow: hidden;
-    }
-
-    .banner-imagen {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 30%;
-    }
-
-    .banner-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, rgba(123,44,191,0.4) 0%, rgba(196,162,255,0.3) 100%);
+    /* ===== BANNER (inspirado en Día de la mujer.png) ===== */
+    .banner-principal {
+      background: linear-gradient(135deg, var(--morado) 0%, var(--lila) 100%);
+      min-height: 300px;
       display: flex;
-      flex-direction: column;
+      align-items: center;
       justify-content: center;
-      align-items: center;
       text-align: center;
       color: white;
-      padding: 1.5rem;
+      padding: 3rem 1.5rem;
+      margin-bottom: 2rem;
     }
 
-    .banner-overlay h2 {
-      font-size: clamp(1.8rem, 7vw, 3.5rem);
-      font-weight: 700;
-      margin-bottom: 0.8rem;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
-      color: white;
-      border-bottom: none;
-    }
-
-    .banner-overlay p {
-      font-size: clamp(1rem, 4vw, 1.8rem);
+    .banner-contenido {
       max-width: 800px;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+    }
+
+    .banner-contenido h2 {
+      font-size: clamp(2rem, 7vw, 3.5rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
       color: white;
-      font-weight: 400;
     }
 
-    .cita-apoyo {
-      text-align: center;
-      margin: 1.5rem 1rem;
-      font-size: clamp(1.1rem, 4vw, 1.6rem);
-      color: var(--morado-principal);
-      background: #faf0ff;
-      padding: 1.2rem 1.5rem;
-      border-radius: 60px 20px 60px 20px;
-      font-weight: 450;
-      border: 1px solid var(--lila-claro);
-      box-shadow: 0 4px 12px rgba(123,44,191,0.05);
+    .banner-contenido p {
+      font-size: clamp(1.2rem, 4vw, 1.8rem);
+      font-style: italic;
+      color: white;
     }
 
-    .cita-apoyo i {
-      color: var(--rosado-suave);
-      margin: 0 0.3rem;
+    /* ===== SECCIÓN PROGRAMA (como "Dona un Pas") ===== */
+    .programa-destacado {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
     }
 
-    main {
-      max-width: 1300px;
-      margin: 1.5rem auto;
-      padding: 0 1rem;
+    .programa-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
     }
 
-    section {
-      background: var(--blanco);
-      padding: 1.8rem 1.5rem;
-      border-radius: 30px 10px 30px 10px;
+    @media (max-width: 768px) {
+      .programa-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+    }
+
+    .programa-info h3 {
+      color: var(--morado);
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
       margin-bottom: 1.5rem;
-      box-shadow: 0 8px 20px -8px rgba(123, 44, 191, 0.08);
-      transition: all 0.15s;
-      border: 1px solid var(--lila-claro);
     }
 
-    h2 {
-      font-size: clamp(1.6rem, 5vw, 2.2rem);
-      font-weight: 500;
-      color: var(--morado-principal);
+    .programa-info p {
+      font-size: 1.2rem;
+      color: var(--texto);
       margin-bottom: 1rem;
-      border-bottom: 3px dotted var(--rosado-suave);
-      padding-bottom: 0.6rem;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
     }
 
-    h2 i {
-      color: var(--rosado-suave);
-      font-size: clamp(1.4rem, 4vw, 2rem);
+    .programa-badge {
+      background: var(--rosa);
+      color: var(--morado);
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      display: inline-block;
+      font-weight: 600;
+      margin: 1rem 0;
     }
 
-    p {
-      font-size: clamp(1rem, 3.8vw, 1.2rem);
-      color: var(--texto-oscuro);
-      margin-bottom: 1rem;
-      word-wrap: break-word;
+    .programa-imagen img {
+      border-radius: 30px 10px 30px 10px;
+      box-shadow: 0 20px 30px -10px rgba(123, 44, 191, 0.3);
     }
 
-    ul {
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      margin-top: 1rem;
+    /* ===== TARJETAS DE METODOLOGÍA ===== */
+    .metodologia {
+      background: var(--fondo-claro);
+      padding: 4rem 1.5rem;
     }
 
-    ul li {
-      background: #faf0ff;
-      padding: 0.8rem 1.2rem;
-      border-radius: 40px;
-      font-weight: 520;
-      color: var(--texto-oscuro);
-      font-size: clamp(0.95rem, 3.5vw, 1.15rem);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      box-shadow: 0 3px 8px rgba(123, 44, 191, 0.1);
-      border: 1px solid var(--lila-claro);
-      flex: 1 1 auto;
-      min-width: 180px;
+    .metodologia h2 {
+      text-align: center;
+      color: var(--morado);
+      font-size: clamp(2rem, 6vw, 2.8rem);
+      margin-bottom: 3rem;
     }
 
-    ul li i {
-      color: var(--morado-principal);
-      font-size: clamp(1.1rem, 4vw, 1.4rem);
+    .tarjetas-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
     }
 
-    .firma-asociacion {
-      background: #faf0ff;
+    .tarjeta {
+      background: white;
+      padding: 2rem 1.5rem;
       border-radius: 25px;
-      padding: 1.5rem;
-      margin: 1.5rem 1rem;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(123, 44, 191, 0.1);
+      transition: transform 0.3s;
+      border: 1px solid var(--lila);
+    }
+
+    .tarjeta:hover {
+      transform: translateY(-5px);
+    }
+
+    .tarjeta i {
+      font-size: 3rem;
+      color: var(--morado);
+      margin-bottom: 1.5rem;
+    }
+
+    .tarjeta h3 {
+      color: var(--morado);
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    .tarjeta p {
+      color: var(--gris);
+    }
+
+    /* ===== ESTADÍSTICAS ===== */
+    .estadisticas {
+      max-width: 1200px;
+      margin: 4rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .estadisticas h2 {
+      text-align: center;
+      color: var(--morado);
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
+      margin-bottom: 2rem;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .stat-item {
+      background: var(--fondo-claro);
+      padding: 2rem 1rem;
+      border-radius: 20px;
+      border: 2px solid var(--lila);
+    }
+
+    .stat-numero {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--morado);
+      display: block;
+      line-height: 1;
+    }
+
+    .stat-numero small {
+      font-size: 1.5rem;
+      color: var(--rosa);
+    }
+
+    .stat-label {
+      color: var(--gris);
+      font-size: 1.1rem;
+    }
+
+    /* ===== TESTIMONIOS ===== */
+    .testimonios {
+      background: var(--morado);
+      color: white;
+      padding: 4rem 1.5rem;
+    }
+
+    .testimonios h2 {
+      text-align: center;
+      font-size: clamp(2rem, 6vw, 2.8rem);
+      margin-bottom: 3rem;
+      color: white;
+    }
+
+    .testimonios-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .testimonio {
+      background: rgba(255,255,255,0.1);
+      padding: 2rem;
+      border-radius: 30px 10px 30px 10px;
+      backdrop-filter: blur(5px);
+      border: 1px solid var(--lila);
+    }
+
+    .testimonio i {
+      color: var(--rosa);
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .testimonio p {
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+    }
+
+    .testimonio-author {
+      font-weight: 600;
+      color: var(--rosa);
+    }
+
+    /* ===== FORMULARIO DE CONTACTO ===== */
+    .contacto {
+      max-width: 1200px;
+      margin: 4rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .contacto h2 {
+      text-align: center;
+      color: var(--morado);
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
+      margin-bottom: 2rem;
+    }
+
+    .contacto-form {
+      max-width: 600px;
+      margin: 0 auto;
+      background: var(--fondo-claro);
+      padding: 2rem;
+      border-radius: 30px;
+      border: 2px solid var(--lila);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--morado);
+      font-weight: 600;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 2px solid var(--lila);
+      border-radius: 50px;
+      font-size: 1rem;
+      transition: 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--morado);
+    }
+
+    .form-group textarea {
+      border-radius: 20px;
+      min-height: 100px;
+    }
+
+    .btn-submit {
+      background: var(--morado);
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      font-weight: 600;
+      border-radius: 50px;
+      cursor: pointer;
+      width: 100%;
+      transition: 0.2s;
+    }
+
+    .btn-submit:hover {
+      background: var(--rosa);
+      color: var(--morado);
+    }
+
+    /* ===== FIRMA ASOCIACIÓN ===== */
+    .firma-asociacion {
+      background: var(--fondo-claro);
+      border-radius: 30px;
+      padding: 2rem;
+      margin: 2rem 1.5rem;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 1rem;
-      border: 2px solid var(--lila-claro);
-      font-size: clamp(1rem, 3.5vw, 1.25rem);
+      border: 2px solid var(--lila);
       text-align: center;
     }
 
     .firma-asociacion .nombre-aso {
       font-weight: 700;
-      color: var(--morado-principal);
-      letter-spacing: 0.3px;
-      font-size: clamp(1.1rem, 4vw, 1.4rem);
-      line-height: 1.4;
+      color: var(--morado);
+      font-size: clamp(1.2rem, 4vw, 1.5rem);
     }
 
     .firma-asociacion .nit {
       font-family: monospace;
-      background: var(--blanco);
-      padding: 0.5rem 1.2rem;
+      background: white;
+      padding: 0.5rem 1.5rem;
       border-radius: 50px;
-      color: var(--gris-suave);
-      border: 1px solid var(--rosado-suave);
-      font-size: clamp(0.9rem, 3.5vw, 1.1rem);
-      word-break: break-word;
+      color: var(--gris);
+      border: 1px solid var(--rosa);
     }
 
-    .firma-asociacion i {
-      color: var(--rosado-suave);
-      margin-right: 6px;
-    }
-
+    /* ===== FOOTER ===== */
     footer {
-      background: var(--morado-principal);
-      color: var(--blanco);
-      text-align: center;
-      padding: 1.8rem 1rem;
-      margin-top: 2rem;
-      font-size: clamp(0.95rem, 3.5vw, 1.2rem);
-      border-top: 4px solid var(--rosado-suave);
-    }
-
-    footer p {
-      color: var(--blanco);
-      margin-bottom: 0;
-    }
-
-    /* Botón flotante optimizado móvil */
-    .floating-heart {
-      position: fixed;
-      bottom: 20px;
-      right: 15px;
-      background: var(--morado-principal);
+      background: var(--morado);
       color: white;
-      width: clamp(45px, 12vw, 50px);
-      height: clamp(45px, 12vw, 50px);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 5px 15px rgba(123, 44, 191, 0.4);
-      opacity: 0.9;
-      z-index: 99;
-      font-size: clamp(1.2rem, 4vw, 1.5rem);
-      pointer-events: none;
+      text-align: center;
+      padding: 2rem;
+      border-top: 5px solid var(--rosa);
     }
 
-    /* Ajustes para móviles pequeños */
+    /* ===== RESPONSIVE ===== */
     @media (max-width: 480px) {
       .encabezado {
         flex-direction: column;
         text-align: center;
       }
       
-      .texto-encabezado p {
-        border-left: none;
-        border-top: 3px solid var(--rosado-suave);
-        padding-top: 0.8rem;
-        padding-left: 0;
-      }
-      
-      .banner-overlay {
-        padding: 1rem;
-      }
-      
-      ul li {
-        min-width: 100%;
-        justify-content: center;
-      }
-      
-      .firma-asociacion {
-        padding: 1.2rem;
-      }
-    }
-
-    /* Ajuste específico para pantallas muy pequeñas */
-    @media (max-width: 360px) {
       nav {
         gap: 0.8rem;
       }
@@ -358,8 +453,12 @@
         font-size: 0.9rem;
       }
       
-      .banner-mujer {
-        height: 220px;
+      .tarjetas-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .stats-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -370,9 +469,9 @@
   <div class="encabezado">
     <div class="texto-encabezado">
       <h1>ASOMUPACHO</h1>
-      <p>Asociación de Mujeres Pachunas con Corazones Generosos</p>
+      <p>Mujeres Pachunas con Corazones Generosos</p>
     </div>
-    <img src="logo.jpeg" alt="Logo ASOMUPACHO" class="logo-derecha" onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22200%22%20height%3D%22200%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2245%22%20fill%3D%22%237B2CBF%22%2F%3E%3Ctext%20x%3D%2250%22%20y%3D%2268%22%20font-size%3D%2236%22%20text-anchor%3D%22middle%22%20fill%3D%22%23F4A6C1%22%20font-family%3D%22Arial%22%3EAP%3C%2Ftext%3E%3C%2Fsvg%3E';">
+    <img src="logo.jpeg" alt="Logo ASOMUPACHO" class="logo-derecha" onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22100%22%20height%3D%22100%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2245%22%20fill%3D%22%237B2CBF%22%2F%3E%3Ctext%20x%3D%2250%22%20y%3D%2268%22%20font-size%3D%2236%22%20text-anchor%3D%22middle%22%20fill%3D%22%23F4A6C1%22%20font-family%3D%22Arial%22%3EAP%3C%2Ftext%3E%3C%2Fsvg%3E';">
   </div>
 </header>
 
@@ -383,61 +482,147 @@
   <a href="#">Contacto</a>
 </nav>
 
-<!-- Banner con la imagen Día de la mujer.png -->
-<div class="banner-mujer">
-  <img class="banner-imagen" src="Día de la mujer.png" alt="Día de la mujer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1598899134737-4c6192d68a46?w=1200&h=500&fit=crop&auto=format';">
-  <!-- Overlay con texto - se ve bien en móvil -->
-  <div class="banner-overlay">
+<!-- BANNER PRINCIPAL (inspirado en Día de la mujer.png) -->
+<section class="banner-principal">
+  <div class="banner-contenido">
     <h2>8M · Día de la Mujer</h2>
     <p>"Mírate con amor. Mereces un amor que cuide, no que lastime."</p>
+    <p style="margin-top:1rem; font-size:1.2rem;">Entre mujeres nos cuidamos. Ni una más. Ni una menos.</p>
   </div>
-</div>
+</section>
 
-<!-- Frase de apoyo del PNG original -->
-<div class="cita-apoyo">
-  <i class="fas fa-female"></i> En este día reconocemos la fuerza, el valor y la dignidad de cada mujer. <i class="fas fa-female"></i>
-</div>
+<!-- PROGRAMA DESTACADO (como "Dona un Pas") -->
+<section class="programa-destacado">
+  <div class="programa-grid">
+    <div class="programa-info">
+      <h3>Programa Mujeres Pachunas</h3>
+      <p>Acompañamiento integral para mujeres rurales que buscan fortalecer su autonomía económica y personal.</p>
+      <div class="programa-badge">
+        <i class="fas fa-calendar"></i> Duración: 1 año · Inscripciones abiertas
+      </div>
+      <p><i class="fas fa-check-circle" style="color:var(--morado);"></i> <strong>Requisitos:</strong> Mujeres de Pacho y veredas, compromiso con el programa.</p>
+      <p><i class="fas fa-clock" style="color:var(--morado);"></i> <strong>Horario:</strong> Dos mañanas a la semana (9am - 12pm)</p>
+    </div>
+    <div class="programa-imagen">
+      <img src="https://images.unsplash.com/photo-1598899134737-4c6192d68a46?w=600&h=400&fit=crop&auto=format" alt="Mujer rural" onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22600%22%20height%3D%22400%22%20viewBox%3D%220%200%20600%20400%22%3E%3Crect%20width%3D%22600%22%20height%3D%22400%22%20fill%3D%22%23C8A2FF%22%2F%3E%3Ccircle%20cx%3D%22300%22%20cy%3D%22150%22%20r%3D%2280%22%20fill%3D%22%237B2CBF%22%2F%3E%3Ctext%20x%3D%22300%22%20y%3D%22300%22%20font-size%3D%2236%22%20fill%3D%22white%22%20text-anchor%3D%22middle%22%3EMujer%20Pachuna%3C%2Ftext%3E%3C%2Fsvg%3E';">
+    </div>
+  </div>
+</section>
 
-<main>
-  <section>
-    <h2><i class="fas fa-users"></i> ¿Quiénes somos?</h2>
-    <p>
-      ASOMUPACHO es una organización de mujeres comprometidas con el desarrollo social, económico y cultural de la comunidad de Pacho, Cundinamarca.
-      Promovemos la participación de mujeres rurales en procesos asociativos con el fin de impulsar actividades productivas, fortalecer la autonomía económica
-      y generar impacto positivo en nuestras comunidades.
-    </p>
-    <p style="font-weight: 300; margin-top: 1.2rem; background: #faf0ff; padding: 1rem 1.2rem; border-radius: 40px; color: var(--texto-oscuro); font-size: clamp(0.95rem, 3.8vw, 1.1rem);">
-      <i class="fas fa-leaf" style="color: #7B2CBF; margin-right: 8px;"></i> 
-      “Cuando una mujer reconoce su valor, también inspira a otras a hacerlo. Entre mujeres nos apoyamos, nos cuidamos y seguimos construyendo una comunidad más justa y solidaria.”
-    </p>
-  </section>
+<!-- METODOLOGÍA (tarjetas) -->
+<section class="metodologia">
+  <h2>Nuestra metodología integral</h2>
+  <div class="tarjetas-grid">
+    <div class="tarjeta">
+      <i class="fas fa-hand-holding-heart"></i>
+      <h3>Acompañamiento</h3>
+      <p>Atención personalizada para fortalecer capacidades y proyectos productivos.</p>
+    </div>
+    <div class="tarjeta">
+      <i class="fas fa-seedling"></i>
+      <h3>Huertas comunitarias</h3>
+      <p>Espacios de cultivo colectivo que generan alimento y redes de apoyo.</p>
+    </div>
+    <div class="tarjeta">
+      <i class="fas fa-chart-line"></i>
+      <h3>Emprendimiento</h3>
+      <p>Capacitación en tejidos, artesanías y gestión de pequeños negocios.</p>
+    </div>
+    <div class="tarjeta">
+      <i class="fas fa-fist-raised"></i>
+      <h3>Empoderamiento</h3>
+      <p>Talleres de liderazgo, autoestima y derechos de las mujeres.</p>
+    </div>
+  </div>
+</section>
 
-  <section>
-    <h2><i class="fas fa-seedling"></i> Nuestros proyectos</h2>
-    <ul>
-      <li><i class="fas fa-hand-sparkles"></i> Tejidos y artesanías</li>
-      <li><i class="fas fa-carrot"></i> Huertas comunitarias</li>
-      <li><i class="fas fa-chart-line"></i> Capacitación en liderazgo y emprendimiento</li>
-    </ul>
-    <p style="margin-top: 1.5rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-      <i class="fas fa-arrow-right" style="color: #F4A6C1; font-size: 1.2rem;"></i> 
-      <span>Próximamente: red de trueque y economía feminista.</span>
-    </p>
-  </section>
-</main>
+<!-- ESTADÍSTICAS DE IMPACTO -->
+<section class="estadisticas">
+  <h2>Impacto en nuestras participantes</h2>
+  <div class="stats-grid">
+    <div class="stat-item">
+      <span class="stat-numero">85<small>%</small></span>
+      <span class="stat-label">Aumenta autoconocimiento</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-numero">78<small>%</small></span>
+      <span class="stat-label">Mejora gestión emocional</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-numero">82<small>%</small></span>
+      <span class="stat-label">Fortalecimiento autoestima</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-numero">70<small>%</small></span>
+      <span class="stat-label">Emprendimientos activos</span>
+    </div>
+  </div>
+</section>
 
-<!-- Bloque de asociación con NIT exacto del archivo -->
+<!-- TESTIMONIOS -->
+<section class="testimonios">
+  <h2>Voces de nuestras mujeres</h2>
+  <div class="testimonios-grid">
+    <div class="testimonio">
+      <i class="fas fa-quote-left"></i>
+      <p>"ASOMUPACHO me ayudó a creer en mí misma. Hoy tengo mi propio negocio de tejidos y soy líder en mi vereda."</p>
+      <div class="testimonio-author">— María, participante</div>
+    </div>
+    <div class="testimonio">
+      <i class="fas fa-quote-left"></i>
+      <p>"Las huertas comunitarias nos han dado alimento y amistad. Ahora nos apoyamos entre todas."</p>
+      <div class="testimonio-author">— Ana, mujer pachuna</div>
+    </div>
+    <div class="testimonio">
+      <i class="fas fa-quote-left"></i>
+      <p>"Aprendí a valorarme y a reconocer que merezco respeto. El programa cambió mi vida."</p>
+      <div class="testimonio-author">— Carmen, participante</div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMULARIO DE CONTACTO -->
+<section class="contacto">
+  <h2>¿Quieres ser parte?</h2>
+  <div class="contacto-form">
+    <form>
+      <div class="form-group">
+        <label>Nombre completo</label>
+        <input type="text" placeholder="Tu nombre">
+      </div>
+      <div class="form-group">
+        <label>Correo electrónico</label>
+        <input type="email" placeholder="tucorreo@ejemplo.com">
+      </div>
+      <div class="form-group">
+        <label>Teléfono</label>
+        <input type="tel" placeholder="+57 ...">
+      </div>
+      <div class="form-group">
+        <label>Vereda / Municipio</label>
+        <input type="text" placeholder="Pacho, Cundinamarca">
+      </div>
+      <div class="form-group">
+        <label>Mensaje</label>
+        <textarea placeholder="Cuéntanos cómo te gustaría participar..."></textarea>
+      </div>
+      <button type="submit" class="btn-submit">Enviar mensaje</button>
+    </form>
+  </div>
+</section>
+
+<!-- FIRMA ASOCIACIÓN -->
 <div class="firma-asociacion">
-  <span class="nombre-aso"><i class="fas fa-heart"></i> ASOCIACIÓN DE MUJERES PACHUNAS CON CORAZONES GENEROSOS</span>
+  <span class="nombre-aso"><i class="fas fa-heart" style="color:var(--rosa);"></i> ASOCIACIÓN DE MUJERES PACHUNAS CON CORAZONES GENEROSOS</span>
   <span class="nit"><i class="fas fa-id-card"></i> Nit: 901944751-2</span>
 </div>
 
 <footer>
-  <p>© 2025 ASOMUPACHO. Todos los derechos reservados.</p>
+  <p>© 2025 ASOMUPACHO · Tejiendo redes de apoyo y esperanza</p>
 </footer>
 
 <!-- Botón flotante decorativo -->
-<div class="floating-heart">
+<div style="position:fixed; bottom:20px; right:15px; background:var(--morado); color:white; width:50px; height:50px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 5px 15px rgba(123,44,191,0.4); z-index:99; font-size:1.5rem;">
   <i class="fas fa-hand-holding-heart"></i>
 </div>
 
