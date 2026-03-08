@@ -1,170 +1,300 @@
-/* Banner rotador */
-.banner-container {
-  width: 100%;
-  margin: 0 auto;
+/* style.css - Estilos base para ASOMUPACHO */
+
+:root {
+  --morado: #7B2CBF;
+  --lila: #C8A2FF;
+  --rosa: #F4A6C1;
+  --blanco: #FFFFFF;
+  --gris: #6B6B6B;
+  --texto: #2D2D2D;
+  --fondo-claro: #faf5ff;
 }
 
-.banner-rotator {
-  position: relative;
-  width: 100%;
-  height: 500px;
-  overflow: hidden;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
 }
 
-.banner-slides {
-  position: relative;
-  width: 100%;
-  height: 100%;
+body {
+  background-color: var(--blanco);
+  color: var(--texto);
+  line-height: 1.5;
+  overflow-x: hidden;
 }
 
-.banner-slide {
-  position: absolute;
+/* Header */
+header {
+  background: var(--blanco);
+  box-shadow: 0 2px 15px rgba(123, 44, 191, 0.1);
+  padding: 1rem 1.5rem;
+  position: sticky;
   top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-  visibility: hidden;
+  z-index: 10;
 }
 
-.banner-slide.active {
-  opacity: 1;
-  visibility: visible;
+.encabezado {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
 }
 
-.banner-slide img {
-  width: 100%;
-  height: 100%;
+.texto-encabezado h1 {
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  color: var(--morado);
+}
+
+.texto-encabezado p {
+  font-size: clamp(0.8rem, 3vw, 1rem);
+  color: var(--gris);
+}
+
+.logo-derecha {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 3px solid var(--lila);
   object-fit: cover;
 }
 
-.banner-caption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(transparent, rgba(123,44,191,0.9));
-  color: white;
-  padding: 3rem 2rem 2rem;
+/* Navegación */
+nav {
+  background: var(--blanco);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 0.8rem 1rem;
+  border-bottom: 2px solid var(--lila);
+}
+
+nav a {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--gris);
+  font-size: 1.1rem;
+  transition: 0.2s;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 4px;
+}
+
+nav a:hover {
+  color: var(--morado);
+  border-bottom-color: var(--rosa);
+}
+
+/* Cita de apoyo */
+.cita-apoyo {
+  text-align: center;
+  margin: 2rem 1rem;
+  font-size: clamp(1.1rem, 4vw, 1.6rem);
+  color: var(--morado);
+  background: #faf0ff;
+  padding: 1.2rem 1.5rem;
+  border-radius: 60px 20px 60px 20px;
+  border: 1px solid var(--lila);
+}
+
+/* Main */
+main {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+}
+
+section {
+  background: var(--blanco);
+  padding: 2rem;
+  border-radius: 30px 10px 30px 10px;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 20px rgba(123, 44, 191, 0.08);
+  border: 1px solid var(--lila);
+}
+
+h2 {
+  font-size: clamp(1.6rem, 5vw, 2.2rem);
+  color: var(--morado);
+  margin-bottom: 1.5rem;
+  border-bottom: 3px dotted var(--rosa);
+  padding-bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+h2 i {
+  color: var(--rosa);
+}
+
+p {
+  font-size: 1.1rem;
+  color: var(--texto);
+  margin-bottom: 1rem;
+}
+
+/* Lista de proyectos */
+ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+ul li {
+  background: #faf0ff;
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--lila);
+}
+
+ul li i {
+  color: var(--morado);
+}
+
+/* Tarjetas de metodología */
+.metodologia .tarjetas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.metodologia .tarjeta {
+  background: #faf0ff;
+  padding: 1.5rem;
+  border-radius: 20px;
+  text-align: center;
+  border: 1px solid var(--lila);
+  transition: 0.2s;
+}
+
+.metodologia .tarjeta:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(123, 44, 191, 0.15);
+}
+
+.metodologia .tarjeta i {
+  font-size: 2.5rem;
+  color: var(--morado);
+  margin-bottom: 1rem;
+}
+
+.metodologia .tarjeta h3 {
+  color: var(--morado);
+  margin-bottom: 0.5rem;
+}
+
+/* Estadísticas */
+.estadisticas .stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
   text-align: center;
 }
 
-.banner-caption h2 {
+.estadisticas .stat-item {
+  background: #faf0ff;
+  padding: 1.5rem;
+  border-radius: 20px;
+  border: 2px solid var(--lila);
+}
+
+.estadisticas .stat-numero {
   font-size: 2.5rem;
-  margin-bottom: 0.5rem;
-  color: white;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  font-weight: 700;
+  color: var(--morado);
+  display: block;
 }
 
-.banner-caption p {
+.estadisticas .stat-numero small {
   font-size: 1.2rem;
-  margin-bottom: 1rem;
-  color: white;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+  color: var(--rosa);
 }
 
-.banner-btn {
-  display: inline-block;
-  background: var(--rosa, #F4A6C1);
-  color: var(--morado, #7B2CBF);
-  padding: 0.8rem 2rem;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: 0.2s;
+.estadisticas .stat-label {
+  color: var(--gris);
 }
 
-.banner-btn:hover {
-  background: var(--lila, #C8A2FF);
-  color: white;
-}
-
-.banner-indicadores {
-  position: absolute;
-  bottom: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
+/* Firma asociación */
+.firma-asociacion {
+  background: #faf0ff;
+  border-radius: 30px;
+  padding: 2rem;
+  margin: 2rem 1.5rem;
   display: flex;
-  gap: 0.8rem;
-  z-index: 10;
-}
-
-.indicador {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.5);
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.indicador.active {
-  background: white;
-  transform: scale(1.2);
-}
-
-.banner-control {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(123,44,191,0.5);
-  color: white;
-  border: none;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  font-size: 2rem;
-  cursor: pointer;
-  z-index: 10;
-  transition: 0.2s;
-  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  gap: 1rem;
+  border: 2px solid var(--lila);
+  text-align: center;
 }
 
-.banner-control:hover {
-  background: var(--morado, #7B2CBF);
+.firma-asociacion .nombre-aso {
+  font-weight: 700;
+  color: var(--morado);
+  font-size: clamp(1.2rem, 4vw, 1.5rem);
 }
 
-.banner-control.prev {
-  left: 1rem;
+.firma-asociacion .nit {
+  font-family: monospace;
+  background: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 50px;
+  color: var(--gris);
+  border: 1px solid var(--rosa);
 }
 
-.banner-control.next {
-  right: 1rem;
+/* Footer */
+footer {
+  background: var(--morado);
+  color: white;
+  text-align: center;
+  padding: 2rem;
+  border-top: 5px solid var(--rosa);
 }
 
+footer p {
+  color: white;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-  .banner-rotator {
-    height: 400px;
+  .encabezado {
+    flex-direction: column;
+    text-align: center;
   }
   
-  .banner-caption h2 {
-    font-size: 1.8rem;
+  nav {
+    gap: 1rem;
   }
   
-  .banner-caption p {
-    font-size: 1rem;
-  }
-  
-  .banner-control {
-    width: 40px;
-    height: 40px;
-    font-size: 1.5rem;
+  nav a {
+    font-size: 0.9rem;
   }
 }
 
 @media (max-width: 480px) {
-  .banner-rotator {
-    height: 350px;
+  ul {
+    flex-direction: column;
   }
   
-  .banner-caption {
-    padding: 2rem 1rem 1rem;
+  ul li {
+    width: 100%;
+    justify-content: center;
   }
   
-  .banner-caption h2 {
-    font-size: 1.5rem;
+  .metodologia .tarjetas-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .estadisticas .stats-grid {
+    grid-template-columns: 1fr;
   }
 }
