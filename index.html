@@ -2,303 +2,169 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-  <title>ASOMUPACHO · Mujeres Pachunas</title>
-  <!-- Font Awesome 6 para íconos -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- Estilos principales -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASOMUPACHO · Mujeres Pachunas con Corazones Generosos</title>
+  <meta name="description" content="ASOMUPACHO es una asociación de mujeres de Pacho, Cundinamarca, que impulsa el emprendimiento, las huertas comunitarias, los tejidos y el liderazgo de las mujeres rurales.">
+  <meta name="theme-color" content="#18181b">
+  <link rel="icon" type="image/png" href="assets/images/logos/favicon.png">
+  <link rel="apple-touch-icon" href="assets/images/logos/icono-app-512.png">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_CO">
+  <meta property="og:title" content="ASOMUPACHO · Mujeres Pachunas con Corazones Generosos">
+  <meta property="og:description" content="Mujeres rurales de Pacho, Cundinamarca, tejiendo redes de apoyo y esperanza.">
+  <meta property="og:url" content="https://asomupacho.github.io/">
+  <meta property="og:image" content="https://asomupacho.github.io/assets/images/logos/compartir.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <style>
-    /* Estilos adicionales específicos para el banner rotador */
-    .banner-container {
-      width: 100%;
-      margin: 0 auto;
-    }
-
-    .banner-rotator {
-      position: relative;
-      width: 100%;
-      height: 500px;
-      overflow: hidden;
-    }
-
-    .banner-slides {
-      position: relative;
-      width: 100%;
-      height: 100%;
-    }
-
-    .banner-slide {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      transition: opacity 0.5s ease-in-out;
-      visibility: hidden;
-    }
-
-    .banner-slide.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .banner-slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .banner-caption {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(transparent, rgba(123,44,191,0.9));
-      color: white;
-      padding: 3rem 2rem 2rem;
-      text-align: center;
-    }
-
-    .banner-caption h2 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-      color: white;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    }
-
-    .banner-caption p {
-      font-size: 1.2rem;
-      margin-bottom: 1rem;
-      color: white;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-    }
-
-    .banner-btn {
-      display: inline-block;
-      background: #F4A6C1;
-      color: #7B2CBF;
-      padding: 0.8rem 2rem;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: 0.2s;
-    }
-
-    .banner-btn:hover {
-      background: #C8A2FF;
-      color: white;
-    }
-
-    .banner-indicadores {
-      position: absolute;
-      bottom: 1rem;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 0.8rem;
-      z-index: 10;
-    }
-
-    .indicador {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.5);
-      cursor: pointer;
-      transition: 0.2s;
-    }
-
-    .indicador.active {
-      background: white;
-      transform: scale(1.2);
-    }
-
-    .banner-control {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(123,44,191,0.5);
-      color: white;
-      border: none;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      font-size: 2rem;
-      cursor: pointer;
-      z-index: 10;
-      transition: 0.2s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .banner-control:hover {
-      background: #7B2CBF;
-    }
-
-    .banner-control.prev {
-      left: 1rem;
-    }
-
-    .banner-control.next {
-      right: 1rem;
-    }
-
-    @media (max-width: 768px) {
-      .banner-rotator {
-        height: 400px;
-      }
-      
-      .banner-caption h2 {
-        font-size: 1.8rem;
-      }
-      
-      .banner-caption p {
-        font-size: 1rem;
-      }
-      
-      .banner-control {
-        width: 40px;
-        height: 40px;
-        font-size: 1.5rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .banner-rotator {
-        height: 350px;
-      }
-      
-      .banner-caption {
-        padding: 2rem 1rem 1rem;
-      }
-      
-      .banner-caption h2 {
-        font-size: 1.5rem;
-      }
-    }
-  </style>
 </head>
 <body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
 
 <header>
-  <div class="encabezado">
-    <div class="texto-encabezado">
-      <h1>ASOMUPACHO</h1>
-      <p>Asociación de Mujeres Pachunas con Corazones Generosos</p>
-    </div>
-    <img src="assets/images/logos/logo.jpeg" alt="Logo ASOMUPACHO" class="logo-derecha" onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22100%22%20height%3D%22100%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2245%22%20fill%3D%22%237B2CBF%22%2F%3E%3Ctext%20x%3D%2250%22%20y%3D%2268%22%20font-size%3D%2236%22%20text-anchor%3D%22middle%22%20fill%3D%22%23F4A6C1%22%20font-family%3D%22Arial%22%3EAP%3C%2Ftext%3E%3C%2Fsvg%3E';">
+  <div class="barra">
+    <a class="marca" href="#inicio" aria-label="ASOMUPACHO, ir al inicio">
+      <img src="assets/images/logos/icono-blanco.png" alt="" class="logo" width="46" height="46">
+      <span>ASOMUPACHO</span>
+    </a>
+    <button class="menu-btn" id="menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><span aria-hidden="true">☰</span></button>
+    <nav id="menu" aria-label="Principal">
+      <ul>
+        <li><a href="#nosotras">Nosotras</a></li>
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#metodologia">Metodología</a></li>
+        <li><a href="#impacto">Impacto</a></li>
+        <li><a href="#contacto" class="btn">Contacto</a></li>
+      </ul>
+    </nav>
   </div>
 </header>
 
-<nav>
-  <a href="#">Inicio</a>
-  <a href="#">Nosotras</a>
-  <a href="#">Proyectos</a>
-  <a href="#">Contacto</a>
-</nav>
+<section class="hero" id="inicio" aria-label="Destacados" aria-roledescription="carrusel"></section>
 
-<!-- Banner rotador con las imágenes de la carpeta banners -->
-<section id="banner-container" class="banner-container">
-  <!-- El rotador se insertará aquí automáticamente con JavaScript -->
-</section>
-
-<!-- Frase de apoyo del Día de la mujer -->
-<div class="cita-apoyo">
-  <i class="fas fa-female"></i> En este día reconocemos la fuerza, el valor y la dignidad de cada mujer. <i class="fas fa-female"></i>
+<div class="confianza">
+  <div class="wrap">
+    <span>Pacho, Cundinamarca</span>
+    <span>Mujeres rurales organizadas</span>
+    <span>NIT 901944751-2</span>
+  </div>
 </div>
 
-<main>
-  <section>
-    <h2><i class="fas fa-users"></i> ¿Quiénes somos?</h2>
-    <p>
-      ASOMUPACHO es una organización de mujeres comprometidas con el desarrollo social, económico y cultural de la comunidad de Pacho, Cundinamarca.
-      Promovemos la participación de mujeres rurales en procesos asociativos con el fin de impulsar actividades productivas, fortalecer la autonomía económica
-      y generar impacto positivo en nuestras comunidades.
-    </p>
-    <p style="font-weight: 300; margin-top: 1.2rem; background: #faf0ff; padding: 1rem 1.5rem; border-radius: 50px; color: #2D2D2D;">
-      <i class="fas fa-leaf" style="color: #7B2CBF; margin-right: 8px;"></i> 
-      “Cuando una mujer reconoce su valor, también inspira a otras a hacerlo. Entre mujeres nos apoyamos, nos cuidamos y seguimos construyendo una comunidad más justa y solidaria.”
-    </p>
+<main id="contenido">
+  <section class="seccion" id="nosotras">
+    <div class="wrap">
+      <h2 class="titulo">¿Quiénes somos?</h2>
+      <p class="texto-largo">
+        ASOMUPACHO es una organización de mujeres comprometidas con el desarrollo social, económico y cultural de la comunidad de Pacho, Cundinamarca.
+        Promovemos la participación de mujeres rurales en procesos asociativos con el fin de impulsar actividades productivas, fortalecer la autonomía económica
+        y generar impacto positivo en nuestras comunidades.
+      </p>
+      <blockquote class="cita">
+        “Cuando una mujer reconoce su valor, también inspira a otras a hacerlo. Entre mujeres nos apoyamos, nos cuidamos y seguimos construyendo una comunidad más justa y solidaria.”
+      </blockquote>
+    </div>
   </section>
 
-  <section>
-    <h2><i class="fas fa-seedling"></i> Nuestros proyectos</h2>
-    <ul>
-      <li><i class="fas fa-hand-sparkles"></i> Tejidos y artesanías</li>
-      <li><i class="fas fa-carrot"></i> Huertas comunitarias</li>
-      <li><i class="fas fa-chart-line"></i> Capacitación en liderazgo y emprendimiento</li>
-    </ul>
-    <p style="margin-top: 1.5rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-      <i class="fas fa-arrow-right" style="color: #F4A6C1; font-size: 1.2rem;"></i> 
-      <span>Próximamente: red de trueque y economía feminista.</span>
-    </p>
-  </section>
-
-  <!-- Sección de metodología (tarjetas) -->
-  <section class="metodologia">
-    <h2><i class="fas fa-cubes"></i> Nuestra metodología</h2>
-    <div class="tarjetas-grid">
-      <div class="tarjeta">
-        <i class="fas fa-hand-holding-heart"></i>
-        <h3>Acompañamiento</h3>
-        <p>Atención personalizada para fortalecer capacidades y proyectos productivos.</p>
-      </div>
-      <div class="tarjeta">
-        <i class="fas fa-seedling"></i>
-        <h3>Huertas comunitarias</h3>
-        <p>Espacios de cultivo colectivo que generan alimento y redes de apoyo.</p>
-      </div>
-      <div class="tarjeta">
-        <i class="fas fa-chart-line"></i>
-        <h3>Emprendimiento</h3>
-        <p>Capacitación en tejidos, artesanías y gestión de pequeños negocios.</p>
-      </div>
-      <div class="tarjeta">
-        <i class="fas fa-fist-raised"></i>
-        <h3>Empoderamiento</h3>
-        <p>Talleres de liderazgo, autoestima y derechos de las mujeres.</p>
+  <section class="seccion" id="proyectos">
+    <div class="wrap">
+      <h2 class="titulo">Nuestros proyectos</h2>
+      <div class="grid">
+        <article class="tarjeta"><span class="num">01</span><h3>Tejidos y artesanías</h3><p>Productos hechos a mano que rescatan nuestras tradiciones y generan ingresos para las asociadas.</p></article>
+        <article class="tarjeta"><span class="num">02</span><h3>Huertas comunitarias</h3><p>Cultivos colectivos que producen alimentos sanos y fortalecen los lazos entre vecinas.</p></article>
+        <article class="tarjeta"><span class="num">03</span><h3>Liderazgo y emprendimiento</h3><p>Capacitación para que más mujeres lideren sus propios proyectos y negocios.</p></article>
+        <article class="tarjeta"><span class="num">04</span><h3>Trueque y economía feminista</h3><p>Una red para intercambiar productos y saberes entre mujeres.</p><span class="pildora">Próximamente</span></article>
       </div>
     </div>
   </section>
 
-  <!-- Estadísticas de impacto -->
-  <section class="estadisticas">
-    <h2><i class="fas fa-chart-pie"></i> Impacto en nuestras participantes</h2>
-    <div class="stats-grid">
-      <div class="stat-item">
-        <span class="stat-numero">85<small>%</small></span>
-        <span class="stat-label">Aumenta autoconocimiento</span>
+  <section class="seccion" id="metodologia">
+    <div class="wrap">
+      <h2 class="titulo">Nuestra metodología</h2>
+      <ul class="checks">
+        <li><div><h3>Acompañamiento</h3><p>Atención personalizada para fortalecer capacidades y proyectos productivos.</p></div></li>
+        <li><div><h3>Huertas comunitarias</h3><p>Espacios de cultivo colectivo que generan alimento y redes de apoyo.</p></div></li>
+        <li><div><h3>Emprendimiento</h3><p>Capacitación en tejidos, artesanías y gestión de pequeños negocios.</p></div></li>
+        <li><div><h3>Empoderamiento</h3><p>Talleres de liderazgo, autoestima y derechos de las mujeres.</p></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="banda" id="impacto">
+    <div class="wrap">
+      <h2 class="titulo">Impacto en nuestras participantes</h2>
+      <p class="intro">Lo que cambia cuando las mujeres se reúnen y se apoyan.</p>
+      <div class="stats" role="group" aria-label="Indicadores de impacto">
+        <div class="stat"><b>85<small>%</small></b><span>Aumenta autoconocimiento</span></div>
+        <div class="stat"><b>78<small>%</small></b><span>Mejora gestión emocional</span></div>
+        <div class="stat"><b>82<small>%</small></b><span>Fortalecimiento autoestima</span></div>
+        <div class="stat"><b>70<small>%</small></b><span>Emprendimientos activos</span></div>
       </div>
-      <div class="stat-item">
-        <span class="stat-numero">78<small>%</small></span>
-        <span class="stat-label">Mejora gestión emocional</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-numero">82<small>%</small></span>
-        <span class="stat-label">Fortalecimiento autoestima</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-numero">70<small>%</small></span>
-        <span class="stat-label">Emprendimientos activos</span>
+    </div>
+  </section>
+
+  <!-- Se muestran solas cuando se agregan fotos o testimonios en scripts/contenido.js -->
+  <section class="seccion" id="galeria" hidden>
+    <div class="wrap">
+      <h2 class="titulo">Galería</h2>
+      <div class="galeria" id="galeria-grid"></div>
+    </div>
+  </section>
+
+  <section class="seccion" id="testimonios" hidden>
+    <div class="wrap">
+      <h2 class="titulo">Voces de nuestras mujeres</h2>
+      <div class="grid" id="testimonios-grid"></div>
+    </div>
+  </section>
+
+  <section class="seccion" id="contacto">
+    <div class="wrap">
+      <h2 class="titulo">Contacto</h2>
+      <div class="contacto">
+        <div>
+          <div class="membresia" aria-hidden="true">
+            <span class="marca-t">ASOMUPACHO</span>
+            <span class="pie"><small>Pacho, Cundinamarca</small>Mujeres Pachunas con Corazones Generosos</span>
+          </div>
+          <p class="dato"><small>CORREO</small><a href="mailto:asocorazonespacho@gmail.com">asocorazonespacho@gmail.com</a></p>
+          <!-- Para agregar WhatsApp o redes sociales, copia una línea "dato" y cambia el enlace -->
+        </div>
+        <div class="tarjeta-form">
+          <p class="intro" style="margin-bottom:24px">¿Quieres conocernos, unirte, apoyar nuestros proyectos o comprar nuestros productos? Escríbenos.</p>
+          <form id="form-contacto">
+            <label for="nombre">Tu nombre</label>
+            <input id="nombre" name="nombre" type="text" autocomplete="name" required>
+            <label for="mensaje">Tu mensaje</label>
+            <textarea id="mensaje" name="mensaje" required></textarea>
+            <button type="submit" class="btn">Enviar por correo</button>
+            <div class="fila-conf"><span>Se abre tu aplicación de correo</span><span>Tu mensaje llega a nuestro correo</span></div>
+          </form>
+        </div>
       </div>
     </div>
   </section>
 </main>
 
-<!-- Bloque de asociación con NIT -->
-<div class="firma-asociacion">
-  <span class="nombre-aso"><i class="fas fa-heart" style="color: #F4A6C1;"></i> ASOCIACIÓN DE MUJERES PACHUNAS CON CORAZONES GENEROSOS</span>
-  <span class="nit"><i class="fas fa-id-card"></i> Nit: 901944751-2</span>
+<div class="firma">
+  <div class="wrap">
+    <img src="assets/images/logos/logo-negro.png" alt="Logo de la Asociación de Mujeres Pachunas con Corazones Generosos" class="logo-firma" width="200" height="200" loading="lazy">
+    <span class="nombre">ASOCIACIÓN DE MUJERES PACHUNAS CON CORAZONES GENEROSOS</span>
+    <span class="nit">NIT 901944751-2</span>
+  </div>
 </div>
 
 <footer>
-  <p>© 2025 ASOMUPACHO · Tejiendo redes de apoyo y esperanza</p>
+  <div class="wrap">
+    <p>© <span id="anio">2026</span> ASOMUPACHO · Tejiendo redes de apoyo y esperanza</p>
+    <p><a href="mailto:asocorazonespacho@gmail.com">asocorazonespacho@gmail.com</a></p>
+  </div>
 </footer>
 
-<!-- Script del banner rotador -->
+<script src="scripts/contenido.js"></script>
 <script src="scripts/banner-rotator.js"></script>
+<script src="scripts/main.js"></script>
 </body>
 </html>

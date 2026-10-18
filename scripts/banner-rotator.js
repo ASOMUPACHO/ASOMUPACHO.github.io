@@ -1,213 +1,71 @@
-// Configuración de banners institucionales con las imágenes que ya tienes
-const banners = [
-  {
-    url: 'assets/images/banners/Día de la mujer.png',
-    titulo: '8M · Día de la Mujer',
-    descripcion: 'Mírate con amor. Mereces un amor que cuide, no que lastime.',
-    link: '#nosotras'
-  },
-  {
-    url: 'assets/images/banners/WhatsApp Image 2026-02-04 at 8.03.51 AM.jpeg',
-    titulo: 'Mujeres Pachunas Tejiendo Esperanza',
-    descripcion: 'Fortaleciendo nuestras tradiciones y creando redes de apoyo',
-    link: '#proyectos'
-  },
-  {
-    url: 'assets/images/banners/WhatsApp Image 2026-02-06 at 8.34.06 AM.jpeg',
-    titulo: 'Huertas Comunitarias',
-    descripcion: 'Cultivando alimentos sanos para nuestras familias',
-    link: '#huertas'
-  },
-  {
-    url: 'assets/images/banners/WhatsApp Image 2026-02-19 at 5.35.02 PM.jpeg',
-    titulo: 'Encuentros de Sororidad',
-    descripcion: 'Compartiendo saberes y fortaleciendo nuestra comunidad',
-    link: '#encuentros'
-  },
-  {
-    url: 'assets/images/banners/WhatsApp Image 2026-02-26 at 2.49.33 PM.jpeg',
-    titulo: 'Talleres de Emprendimiento',
-    descripcion: 'Desarrollando habilidades para nuestra autonomía económica',
-    link: '#emprendimiento'
-  },
-  {
-    url: 'assets/images/banners/WhatsApp Image 2026-03-03 at 9.00.06 AM.jpeg',
-    titulo: 'Mujeres que Inspiran',
-    descripcion: 'Reconociendo la fuerza y el valor de cada mujer pachuna',
-    link: '#testimonios'
-  }
-];
+// Carrusel de banners. Usa BANNERS de scripts/contenido.js
+function iniciarBanner(el, banners, intervalo = 6000) {
+  if (!el || !banners.length) return;
+  let actual = 0, timer = null;
 
-// Configuración del rotador
-const config = {
-  intervalo: 5000, // 5 segundos entre cada banner
-  autoInicio: true,
-  pausaOnHover: true,
-  mostrarIndicadores: true,
-  mostrarControles: true,
-  efecto: 'fade' // Puede ser 'fade' o 'slide'
-};
+  el.innerHTML = `<div class="slides"></div>
+    <button class="ctrl prev" aria-label="Anterior">←</button>
+    <button class="ctrl next" aria-label="Siguiente">→</button>
+    <div class="puntos" role="tablist"></div>`;
+  const cont = el.querySelector('.slides');
+  const puntos = el.querySelector('.puntos');
 
-// Función para inicializar el rotador
-function initBannerRotator(containerId, banners, config) {
-  const container = document.getElementById(containerId);
-  if (!container) {
-    console.error('Contenedor no encontrado:', containerId);
-    return;
-  }
+  banners.forEach((b, i) => {
+    const s = document.createElement('div');
+    s.className = 'slide sin-foto' + (i === 0 ? ' active' : '');
+    s.setAttribute('role', 'group');
+    s.setAttribute('aria-label', `${i + 1} de ${banners.length}`);
+    const fondo = document.createElement('div');
+    fondo.className = 'fondo';
+    s.appendChild(fondo);
+    if (b.foto) { // solo se usa la foto si realmente carga
+      const img = new Image();
+      img.onload = () => { fondo.style.backgroundImage = `url("${b.foto}")`; if (b.posicion) fondo.style.backgroundPosition = b.posicion; s.classList.remove('sin-foto'); s.classList.add('con-foto'); };
+      img.src = b.foto;
+    }
+    const velo = document.createElement('div'); velo.className = 'velo'; s.appendChild(velo);
+    const t = document.createElement('div'); t.className = 'texto';
+    const h = document.createElement('h2'); h.textContent = b.titulo;
+    const p = document.createElement('p'); p.textContent = b.texto;
+    t.append(h, p);
+    if (b.enlace) { const a = document.createElement('a'); a.className = 'btn'; a.href = b.enlace; a.textContent = b.boton || 'Conocer más'; t.appendChild(a); }
+    s.appendChild(t);
+    cont.appendChild(s);
 
-  let indiceActual = 0;
-  let intervaloRotador;
-  
-  // Crear estructura del banner
-  container.innerHTML = `
-    <div class="banner-rotator">
-      <div class="banner-slides"></div>
-      ${config.mostrarIndicadores ? '<div class="banner-indicadores"></div>' : ''}
-      ${config.mostrarControles ? `
-        <button class="banner-control prev" aria-label="Anterior">❮</button>
-        <button class="banner-control next" aria-label="Siguiente">❯</button>
-      ` : ''}
-    </div>
-  `;
-
-  const slidesContainer = container.querySelector('.banner-slides');
-  
-  // Crear slides para cada banner
-  banners.forEach((banner, index) => {
-    const slide = document.createElement('div');
-    slide.className = `banner-slide ${index === 0 ? 'active' : ''}`;
-    
-    // Determinar descripción alternativa si no hay
-    const descripcion = banner.descripcion || 'ASOMUPACHO - Mujeres Pachunas con Corazones Generosos';
-    
-    slide.innerHTML = `
-      <img src="${banner.url}" alt="${banner.titulo}" 
-           onerror="this.src='https://via.placeholder.com/1200x400?text=ASOMUPACHO'">
-      <div class="banner-caption">
-        <h2>${banner.titulo}</h2>
-        <p>${descripcion}</p>
-        ${banner.link ? '<a href="' + banner.link + '" class="banner-btn">Conocer más</a>' : ''}
-      </div>
-    `;
-    slidesContainer.appendChild(slide);
+    const d = document.createElement('button');
+    d.className = 'punto' + (i === 0 ? ' active' : '');
+    d.setAttribute('aria-label', `Ir al banner ${i + 1}`);
+    d.addEventListener('click', () => { ir(i); reiniciar(); });
+    puntos.appendChild(d);
   });
 
-  // Crear indicadores (puntos de navegación)
-  if (config.mostrarIndicadores) {
-    const indicadores = container.querySelector('.banner-indicadores');
-    banners.forEach((_, index) => {
-      const indicador = document.createElement('span');
-      indicador.className = `indicador ${index === 0 ? 'active' : ''}`;
-      indicador.setAttribute('aria-label', `Ir al banner ${index + 1}`);
-      indicador.addEventListener('click', () => cambiarSlide(index));
-      indicadores.appendChild(indicador);
-    });
+  const slides = cont.querySelectorAll('.slide');
+  const dots = puntos.querySelectorAll('.punto');
+  function ir(n) {
+    n = (n + banners.length) % banners.length;
+    slides[actual].classList.remove('active'); dots[actual].classList.remove('active');
+    slides[n].classList.add('active'); dots[n].classList.add('active');
+    actual = n;
   }
+  const reducido = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function iniciar() { if (!reducido && banners.length > 1) timer = setInterval(() => ir(actual + 1), intervalo); }
+  function parar() { clearInterval(timer); }
+  function reiniciar() { parar(); iniciar(); }
 
-  // Función para cambiar de slide
-  function cambiarSlide(nuevoIndice) {
-    const slides = container.querySelectorAll('.banner-slide');
-    const indicadores = container.querySelectorAll('.indicador');
-    
-    // Validar índice
-    if (nuevoIndice < 0) nuevoIndice = banners.length - 1;
-    if (nuevoIndice >= banners.length) nuevoIndice = 0;
-    
-    // Quitar clase active del slide actual
-    slides[indiceActual].classList.remove('active');
-    // Agregar clase active al nuevo slide
-    slides[nuevoIndice].classList.add('active');
-    
-    // Actualizar indicadores
-    if (indicadores.length) {
-      indicadores[indiceActual].classList.remove('active');
-      indicadores[nuevoIndice].classList.add('active');
-    }
-    
-    indiceActual = nuevoIndice;
-  }
+  el.querySelector('.prev').addEventListener('click', () => { ir(actual - 1); reiniciar(); });
+  el.querySelector('.next').addEventListener('click', () => { ir(actual + 1); reiniciar(); });
+  el.addEventListener('mouseenter', parar);
+  el.addEventListener('mouseleave', iniciar);
+  el.addEventListener('focusin', parar);
+  el.addEventListener('focusout', iniciar);
 
-  // Configurar controles de navegación
-  if (config.mostrarControles) {
-    const prevBtn = container.querySelector('.prev');
-    const nextBtn = container.querySelector('.next');
-    
-    if (prevBtn) {
-      prevBtn.addEventListener('click', () => {
-        cambiarSlide(indiceActual - 1);
-      });
-    }
-    
-    if (nextBtn) {
-      nextBtn.addEventListener('click', () => {
-        cambiarSlide(indiceActual + 1);
-      });
-    }
-  }
-
-  // Auto rotación
-  if (config.autoInicio) {
-    intervaloRotador = setInterval(() => {
-      cambiarSlide(indiceActual + 1);
-    }, config.intervalo);
-  }
-
-  // Pausa en hover
-  if (config.pausaOnHover) {
-    container.addEventListener('mouseenter', () => {
-      clearInterval(intervaloRotador);
-    });
-    
-    container.addEventListener('mouseleave', () => {
-      if (config.autoInicio) {
-        intervaloRotador = setInterval(() => {
-          cambiarSlide(indiceActual + 1);
-        }, config.intervalo);
-      }
-    });
-  }
-
-  // Soporte para navegación táctil (swipe)
-  let touchStartX = 0;
-  let touchEndX = 0;
-  
-  container.addEventListener('touchstart', (e) => {
-    touchStartX = e.changedTouches[0].screenX;
+  let x0 = 0;
+  el.addEventListener('touchstart', e => { x0 = e.changedTouches[0].screenX; }, { passive: true });
+  el.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].screenX - x0;
+    if (Math.abs(dx) > 50) { ir(actual + (dx < 0 ? 1 : -1)); reiniciar(); }
   }, { passive: true });
-  
-  container.addEventListener('touchend', (e) => {
-    touchEndX = e.changedTouches[0].screenX;
-    handleSwipe();
-  }, { passive: true });
-  
-  function handleSwipe() {
-    const swipeThreshold = 50;
-    if (touchEndX < touchStartX - swipeThreshold) {
-      // Swipe izquierda -> siguiente
-      cambiarSlide(indiceActual + 1);
-    }
-    if (touchEndX > touchStartX + swipeThreshold) {
-      // Swipe derecha -> anterior
-      cambiarSlide(indiceActual - 1);
-    }
-  }
+
+  if (banners.length < 2) el.querySelectorAll('.ctrl,.puntos').forEach(n => n.hidden = true);
+  iniciar();
 }
-
-// Inicializar cuando el DOM esté listo
-document.addEventListener('DOMContentLoaded', () => {
-  // Verificar que el contenedor existe
-  const bannerContainer = document.getElementById('banner-container');
-  if (bannerContainer) {
-    initBannerRotator('banner-container', banners, config);
-  } else {
-    console.warn('No se encontró el contenedor con id "banner-container". Creándolo automáticamente...');
-    // Crear el contenedor si no existe
-    const mainContent = document.querySelector('main') || document.body;
-    const newContainer = document.createElement('section');
-    newContainer.id = 'banner-container';
-    newContainer.className = 'banner-container';
-    mainContent.insertBefore(newContainer, mainContent.firstChild);
-    initBannerRotator('banner-container', banners, config);
-  }
-});
